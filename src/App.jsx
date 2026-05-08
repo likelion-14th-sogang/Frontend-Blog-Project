@@ -3,7 +3,7 @@ function App() {
 
 
   return (
-    <>ahh</>
+    <>🦁 블로그 프로젝트 Day 1 !!</>
   )
 }
 

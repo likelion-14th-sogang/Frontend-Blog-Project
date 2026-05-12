@@ -8,23 +8,36 @@ export default function LoginButton() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // 로그인 상태 확인하는 상황들
-    //1. 첫 렌더링
-    //2. pathname, 즉 페이지 이동할때마다
-    //3. 로그아웃 버튼을 클릭 -> 로그인 상태 변경 시
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-  }, [isLogin, pathname]);
+  const accessToken = localStorage.getItem("accessToken");
+  setIsLogin(!!accessToken);
+}, [pathname]);
 
-  const handleLogout = () => {
+ const handleLogout = async () => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/auth/logout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("logout failed");
+    }
+
     localStorage.removeItem("accessToken");
     alert("로그아웃 되었습니다.");
     setIsLogin(false);
-  };
+
+    navigate("/login"); // optional
+  } catch (error) {
+    console.error("Logout error:", error);
+  }
+};
 
   if (pathname === "/login" || pathname === "/write") {
     // 로그인 페이지나 글쓰기 페이지에서는 버튼을 보여주지 않음

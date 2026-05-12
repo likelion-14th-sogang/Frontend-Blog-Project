@@ -1,9 +1,9 @@
-export const posts = [
+export const mockup = [
   {
     id: 1,
     title: "사이드 프로젝트 구인",
     author: "이예나",
-    createdAt: "20256-04-07T00:00:00.000000",
+    createdAt: "2026-04-07T00:00:00.000000",
     totalLikes: 3,
     totalComments: 21,
   },

@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import HeaderSection from "../components/Home/HeaderSection";
-
+import ListSection from "../components/Home/ListSection";
+import {mockup} from "../components/Home/data";
 
 export default function Home() {
   return (
     <HomeContainer>
       <div>
         <HeaderSection />
+        <ListSection posts={mockup}/>
       </div>
     </HomeContainer>
   );

@@ -30,10 +30,10 @@ export default function ListItem({
         <ListItemDate>{formatKoreanDate(createdAt)}</ListItemDate>
       </div>
       <div className="info">
-        <IoHeartOutline size={16} color="--icon-tertiary" />
+        <IoHeartOutline size={16} color="var(--icon-tertiary)" />
         <span>{totalLikes}</span>
         <span>·</span>
-        <IoChatbubbleOutline size={16} color="--icon-tertiary" />
+        <IoChatbubbleOutline size={16} color="var(--icon-tertiary)" />
         <span>{totalComments}</span>
       </div>
     </ListItemWrapper>

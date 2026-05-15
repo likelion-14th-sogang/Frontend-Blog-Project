@@ -2,7 +2,7 @@ import CommentDeleteBtn from "./CommentDeleteBtn";
 import styled from "styled-components";
 import { formatKoreanDate } from "../../../utils/dateFormat";
 
-const CommentList = ({ commentList, onCommentPosted }) => {
+const CommentList = ({ commentList = []}) => {
   return (
     <CommentListWrapper>
       {commentList.map((el) => (
@@ -14,7 +14,6 @@ const CommentList = ({ commentList, onCommentPosted }) => {
           <CommentFooter>
             <p>{formatKoreanDate(el.createdAt)}</p>
             <CommentDeleteBtn
-              onCommentPosted={onCommentPosted}
               commentId={el.id}
             />
           </CommentFooter>

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { formatKoreanDate } from "../../utils/dateFormat";
 
 import {
   IoHeartOutline,
@@ -27,7 +26,7 @@ export default function ListItem({
       <div className="info">
         <ListItemAuthor>{author}</ListItemAuthor>
         <span>·</span>
-        <ListItemDate>{formatKoreanDate(createdAt)}</ListItemDate>
+        <ListItemDate>{createdAt}</ListItemDate>
       </div>
       <div className="info">
         <IoHeartOutline size={16} color="var(--icon-tertiary)" />

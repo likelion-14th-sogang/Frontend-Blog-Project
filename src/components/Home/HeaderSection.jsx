@@ -1,16 +1,14 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { IoChevronDown } from "react-icons/io5";
+
 
 export default function HeaderSection() {
-  // props로 {filter, onChangeFilter} 받아오기!!
+  // TODO 1: props로 {filter, onChangeFilter} 받아오기!!
   const navigate = useNavigate();
 
-  // const [showOrders, setShowOrders] = useState(false);
-
-  // const onClickOrder = () => {
-  //   setShowOrders(!showOrders);
-  // };
+  // TODO 2: order 관리하기
 
   const onClickWriteButton = () => {
     navigate("/write");
@@ -83,12 +81,11 @@ const HeaderSectionWrapepr = styled.section`
 //   background-color: white;
 // `;
 
-// const CaretDownWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   transform: rotate(${({ $showOrders }) => ($showOrders ? "180deg" : "0deg")});
+
+// const CaretIcon = styled(IoChevronDown)`
+//   font-size: 1.6rem;
 //   transition: transform 0.2s ease;
+//   transform: rotate(${({ $showOrders }) => ($showOrders ? "180deg" : "0deg")});
 // `;
 
 const WriteButton = styled.button`

@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
 
-const LikeBtn = ({ data }) => {
+const LikeBtn = () => {
 
   return (
     <LikeButton>
-      <StyledIcon name="heart-outline" />
+        <StyledOutlineIcon />
       <span>좋아요</span>
-      <span> {data?.totalLike}</span>
     </LikeButton>
   );
 };
@@ -37,7 +37,12 @@ const LikeButton = styled.button`
   }
 `;
 
-const StyledIcon = styled("ion-icon")`
+const StyledFilledIcon = styled(IoHeart)`
+  font-size: 1.6rem;
+  cursor: pointer;
+`;
+
+const StyledOutlineIcon = styled(IoHeartOutline)`
   font-size: 1.6rem;
   cursor: pointer;
 `;

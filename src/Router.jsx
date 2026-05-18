@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import HeaderLayout from "./components/common/Layout";
 import WritePost from "./pages/WritePost";
 import PostDetail from "./pages/PostDetail";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path: "write",
         element: <WritePost />,
       },
+      {
+        path: "login",
+        element: <Login />
+      }
     ],
   },
 ]);

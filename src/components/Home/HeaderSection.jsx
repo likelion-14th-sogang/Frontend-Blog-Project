@@ -3,28 +3,53 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoChevronDown } from "react-icons/io5";
 
+const orders = ["최신순", "인기순", "댓글순"];
 
-export default function HeaderSection() {
-  // TODO 1: props로 {filter, onChangeFilter} 받아오기!!
+export default function HeaderSection({ filter, setFilter }) {
+  // TODO 1: props로 {filter, onChangeFilter} 받아오기!! -> 완료
   const navigate = useNavigate();
 
+
+
   // TODO 2: order 관리하기
+  const [showOrders, setShowOrders] = useState(false);
+  const onClickOrder = () => {
+    setShowOrders(!showOrders);
+  };
 
   const onClickWriteButton = () => {
     navigate("/write");
   };
 
   return (
-    <HeaderSectionWrapepr>
+    <HeaderSectionWrapper>
       <div>
         <div className="title">게시판</div>
+        <div className="order" onClick={onClickOrder}>
+
+        <CurrentFilter>{filter}</CurrentFilter>
+        <CaretIcon $showOrders={showOrders}/>
+
+        {showOrders && (
+          <OrderList className="orders">
+            {orders.map((order) => (
+              <div key={order} className="order-item"
+              onClick={() => setFilter(order)}>
+                {order}
+            </div>
+            ))}
+        </OrderList>
+        )}
+        </div>
       </div>
       <WriteButton onClick={onClickWriteButton}>글쓰기</WriteButton>
-    </HeaderSectionWrapepr>
+    </HeaderSectionWrapper>
   );
 }
 
-const HeaderSectionWrapepr = styled.section`
+const CurrentFilter = styled.span``;
+
+const HeaderSectionWrapper = styled.section`
   width: 100%;
   max-width: 74.4rem;
   display: flex;
@@ -67,26 +92,26 @@ const HeaderSectionWrapepr = styled.section`
   }
 `;
 
-// const OrderList = styled.div`
-//   width: 100%;
-//   position: absolute;
-//   padding: 0.6rem;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.6rem;
-//   left: 0;
-//   top: 100%;
-//   border-radius: 0.8rem;
-//   border: 1px solid var(--line-secondary, rgba(112, 115, 124, 0.16));
-//   background-color: white;
-// `;
+const OrderList = styled.div`
+  width: 100%;
+  position: absolute;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  left: 0;
+  top: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid var(--line-secondary, rgba(112, 115, 124, 0.16));
+  background-color: white;
+`;
 
 
-// const CaretIcon = styled(IoChevronDown)`
-//   font-size: 1.6rem;
-//   transition: transform 0.2s ease;
-//   transform: rotate(${({ $showOrders }) => ($showOrders ? "180deg" : "0deg")});
-// `;
+const CaretIcon = styled(IoChevronDown)`
+  font-size: 1.6rem;
+  transition: transform 0.2s ease;
+  transform: rotate(${({ $showOrders }) => ($showOrders ? "180deg" : "0deg")});
+`;
 
 const WriteButton = styled.button`
   color: var(--text-brand-invert, #fff);
